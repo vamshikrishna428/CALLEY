@@ -17,12 +17,10 @@ public class FullTeamSetUpTest extends BaseClass {
 	@Test
 	public void teamSetUpTest() throws InterruptedException, AWTException  {
 		agentpage=new AgentPage(driver);
-		csvuploadpage=new CSVUploadPage(driver);
+		agentpage.mouseHoverTeam();
+		agentNameTxField = properties.getProperty("AgentName");
 		random=new Random();
 		randomnumber = random.nextInt(99);
-		agentpage.mouseHoverTeam();
-
-		agentNameTxField = properties.getProperty("AgentName");
 		agentpage.addAgentNameTxField(agentNameTxField+randomnumber);
 		agentMobileNumber = properties.getProperty("AgentmobileNumber");
 		agentpage.agentMobileNoTxField(agentMobileNumber+randomnumber);
@@ -36,7 +34,8 @@ public class FullTeamSetUpTest extends BaseClass {
 		agentpage.mouseHoverCallList();
 
 		listNameTest = properties.getProperty("ListName");
-
+		
+		csvuploadpage=new CSVUploadPage(driver);
 		csvuploadpage.listNameTextField(listNameTest);
 		csvuploadpage.selectAnAgent();
 		csvuploadpage.selectAll();

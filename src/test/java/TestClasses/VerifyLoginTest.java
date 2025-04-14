@@ -6,9 +6,9 @@ import org.testng.asserts.SoftAssert;
 import Instances.BaseClass;
 @Test
 public class VerifyLoginTest extends BaseClass {
-	//public WebDriver driver;
 	@Test
 	public void verifyLoginTest()  {
+		loginpage.popUpCloseButton();
 		String expectedtitle = "Getcalley - Dashboard";
 		String actualtitle = driver.getTitle();
 		System.out.println(actualtitle);

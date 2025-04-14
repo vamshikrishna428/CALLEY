@@ -25,28 +25,32 @@ import PomPages.LoginPage;
 public class BaseClass {
 	public WebDriver driver;
 	public 	Robot robot;
+	public Random random;
 	public Properties properties;
 	public FileInputStream fileinputstream;
 	public StringSelection stringselection;
 
 	public LoginPage loginpage;
-	public LogOutPage logoutpage;
 	public AgentPage agentpage;
+	public LogOutPage logoutpage;
+
 	public CSVUploadPage csvuploadpage;
 
 
-	public Random random;
+	
 	public int randomnumber;
 	public long longtimeout;
+	public String agentNameTxField;
 	public String implicitwait;
 	public String loginurl;
 	public String usernameData;
 	public String passwordData;
-
-	public String agentNameTxField;
 	public String agentMobileNumber;
 	public String agentEmailId;
 	public String agentPassword;
+
+	
+	
 	public String listNameTest;
 
 	@BeforeTest
@@ -76,7 +80,7 @@ public class BaseClass {
 		usernameData = properties.getProperty("useremail");
 		passwordData = properties.getProperty("userpassword");
 		loginpage.signIn(usernameData, passwordData);
-		loginpage.popUpCloseButton();
+		
 
 	}
 	@AfterMethod
