@@ -8,7 +8,7 @@ import Instances.BaseClass;
 public class VerifyLoginTest extends BaseClass {
 	@Test
 	public void verifyLoginTest()  {
-		loginpage.popUpCloseButton();
+	//	loginpage.popUpCloseButton();
 		String expectedtitle = "Getcalley - Dashboard";
 		String actualtitle = driver.getTitle();
 		System.out.println(actualtitle);

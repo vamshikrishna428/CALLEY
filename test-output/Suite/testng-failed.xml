@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="TestClasses.AddAgentsTest">
+        <methods>
+          <include name="login"/>
+          <include name="addAgentsTest"/>
+          <include name="config"/>
+          <include name="logOut"/>
+          <include name="openBrowser"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- TestClasses.AddAgentsTest -->
+      <class name="TestClasses.FullTeamSetUpTest">
+        <methods>
+          <include name="login"/>
+          <include name="teamSetUpTest"/>
+          <include name="config"/>
+          <include name="logOut"/>
+          <include name="openBrowser"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- TestClasses.FullTeamSetUpTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

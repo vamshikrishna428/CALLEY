@@ -55,7 +55,9 @@ public class FullTeamSetUpTest extends BaseClass {
 		robot.keyRelease(KeyEvent.VK_ENTER); 
 
 		csvuploadpage.uploadFileButton();
+		Thread.sleep(2000);
 		csvuploadpage.sweetPopUpButton();
+		Thread.sleep(2000);
 		csvuploadpage.belongToFirstName();
 		csvuploadpage.belongToPhoneNumber();
 		csvuploadpage.belongToNotes();
