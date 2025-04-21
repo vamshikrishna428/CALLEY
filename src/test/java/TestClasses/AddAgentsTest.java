@@ -25,7 +25,6 @@ public class AddAgentsTest extends BaseClass {
 		agentPassword = properties.getProperty("AgentPassword");
 		agentpage.agentPassword(agentPassword);
 		agentpage.agentSubmitButton();
-//		System.out.println(driver.switchTo().alert().getText());
 		agentpage.confirmationPopUp();
 
 	}

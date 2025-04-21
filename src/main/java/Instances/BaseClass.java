@@ -37,7 +37,7 @@ public class BaseClass {
 	public CSVUploadPage csvuploadpage;
 
 
-	
+
 	public int randomnumber;
 	public long longtimeout;
 	public String agentNameTxField;
@@ -49,20 +49,21 @@ public class BaseClass {
 	public String agentEmailId;
 	public String agentPassword;
 
-	
-	
+
+
 	public String listNameTest;
 
 	@BeforeTest
-	public void config() throws IOException {
+	public void config()  {
+	}
+
+	@BeforeClass
+	public void openBrowser()  throws IOException{
 		fileinputstream=new FileInputStream("./src/test/resources/testData.properties");
 		properties=new Properties();
 		properties.load(fileinputstream);
 
-	}
 
-	@BeforeClass
-	public void openBrowser()  {
 		ChromeOptions chromeoptions = new ChromeOptions();
 		chromeoptions.addArguments("--disable-notifications");
 		driver = new ChromeDriver(chromeoptions);
@@ -80,7 +81,7 @@ public class BaseClass {
 		usernameData = properties.getProperty("useremail");
 		passwordData = properties.getProperty("userpassword");
 		loginpage.signIn(usernameData, passwordData);
-		
+
 
 	}
 	@AfterMethod

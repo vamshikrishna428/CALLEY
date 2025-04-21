@@ -11,7 +11,7 @@ public class VerifyLoginTest extends BaseClass {
 	//	loginpage.popUpCloseButton();
 		String expectedtitle = "Getcalley - Dashboard";
 		String actualtitle = driver.getTitle();
-		System.out.println(actualtitle);
+		System.out.println("Title is"+actualtitle+"Welcome page is Displayed ");
 		SoftAssert softassert=new SoftAssert();
 		softassert.assertEquals(actualtitle,expectedtitle);
 		softassert.assertAll();
