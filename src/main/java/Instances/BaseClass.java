@@ -13,8 +13,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import PomPages.AgentPage;
@@ -49,12 +52,16 @@ public class BaseClass {
 	public String agentEmailId;
 	public String agentPassword;
 
-
-
 	public String listNameTest;
-
+	
+	
+	@BeforeSuite
+	public void beforeSuit() {
+		System.out.println("BeforeSuiteMethod");
+	}
 	@BeforeTest
-	public void config()  {
+	public void beforeTest()  {
+		System.out.println("BeforeTestMethod");
 	}
 
 	@BeforeClass
@@ -63,14 +70,13 @@ public class BaseClass {
 		properties=new Properties();
 		properties.load(fileinputstream);
 
-
 		ChromeOptions chromeoptions = new ChromeOptions();
 		chromeoptions.addArguments("--disable-notifications");
 		driver = new ChromeDriver(chromeoptions);
 		driver.manage().window().maximize();
 	}
 	@BeforeMethod
-	public void login() throws IOException {
+	public void login() {
 
 		loginurl = properties.getProperty("LoginUrl");
 		driver.get(loginurl);
@@ -81,7 +87,6 @@ public class BaseClass {
 		usernameData = properties.getProperty("useremail");
 		passwordData = properties.getProperty("userpassword");
 		loginpage.signIn(usernameData, passwordData);
-
 
 	}
 	@AfterMethod
@@ -95,7 +100,14 @@ public class BaseClass {
 	public void closeBrowser() {
 		driver.quit();
 	}
-
+	@AfterTest
+	public void afterTest() {
+		System.out.println("AfterTestMethod");
+	}
+	@AfterSuite
+	public void afterSuit() {
+		System.out.println("AfterSuiteMethod");
+	}
 
 
 }
