@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<test thread-count="5" name="Test">
+	<listeners>
+		<listener class-name="Instances.MYListeners"/>
+	</listeners>
+	<test  name="Test">
 		<classes>
 			<class name="TestClasses.VerifyLoginTest"></class>
-			<class name="TestClasses.AddAgentsTest"></class>
-			<class name="TestClasses.FullTeamSetUpTest"></class>
 		</classes>
 	</test>
 </suite>

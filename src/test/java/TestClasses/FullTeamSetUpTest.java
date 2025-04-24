@@ -7,12 +7,14 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Instances.BaseClass;
+import Instances.MYListeners;
 import PomPages.AgentPage;
 import PomPages.CSVUploadPage;
-
+@Listeners(MYListeners.class)
 public class FullTeamSetUpTest extends BaseClass {
 	@Test
 	public void teamSetUpTest() throws InterruptedException, AWTException  {
