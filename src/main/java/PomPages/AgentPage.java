@@ -8,8 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AgentPage {
 	WebDriver driver;
+
 	public AgentPage(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -43,37 +44,42 @@ public class AgentPage {
 	@FindBy(xpath = "//a[@href='BulkUploadCsv.aspx']/child::span[contains(text(),'Add - Power Import')]")
 	private WebElement addpowerimport;
 
-
 	public void mouseHoverTeam() {
 		Actions ac = new Actions(driver);
 		ac.moveToElement(hoverteam);
 		ac.moveToElement(agents);
 		ac.click().build().perform();
 	}
+
 	public void addAgentNameTxField(String agentName) {
 		addagentname.sendKeys(agentName);
 	}
+
 	public void agentMobileNoTxField(String mobileNmber) {
 		agentmobileno.sendKeys(mobileNmber);
 	}
+
 	public void agentEmailId(String agentEmail) {
 		agentemailidtxfield.sendKeys(agentEmail);
 	}
+
 	public void agentPassword(String agentPassword) {
 		agentpasswordtxfield.sendKeys(agentPassword);
 	}
+
 	public void agentSubmitButton() {
 		agentsubmitbtn.click();
 	}
+
 	public void confirmationPopUp() {
 		popup.click();
 	}
+
 	public void mouseHoverCallList() {
-		Actions ac= new Actions(driver);
+		Actions ac = new Actions(driver);
 		ac.moveToElement(hovercalllist);
 		ac.moveToElement(addpowerimport);
 		ac.click().build().perform();
 	}
-
 
 }

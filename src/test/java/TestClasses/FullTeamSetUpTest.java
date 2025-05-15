@@ -7,28 +7,26 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Instances.BaseClass;
-import Instances.MYListeners;
 import PomPages.AgentPage;
 import PomPages.CSVUploadPage;
-@Listeners(MYListeners.class)
+
 public class FullTeamSetUpTest extends BaseClass {
 	@Test
-	public void teamSetUpTest() throws InterruptedException, AWTException  {
-		agentpage=new AgentPage(driver);
+	public void teamSetUpTest() throws InterruptedException, AWTException {
+		agentpage = new AgentPage(driver);
 		agentpage.mouseHoverTeam();
 		agentNameTxField = properties.getProperty("AgentName");
-		random=new Random();
+		random = new Random();
 		randomnumber = random.nextInt(99);
-		agentpage.addAgentNameTxField(agentNameTxField+randomnumber);
+		agentpage.addAgentNameTxField(agentNameTxField + randomnumber);
 		agentMobileNumber = properties.getProperty("AgentmobileNumber");
-		agentpage.agentMobileNoTxField(agentMobileNumber+randomnumber);
+		agentpage.agentMobileNoTxField(agentMobileNumber + randomnumber);
 		agentEmailId = properties.getProperty("AgentEmailId");
 
-		agentpage.agentEmailId(agentEmailId+randomnumber+"@gmail.com");
+		agentpage.agentEmailId(agentEmailId + randomnumber + "@gmail.com");
 		agentPassword = properties.getProperty("AgentPassword");
 		agentpage.agentPassword(agentPassword);
 		agentpage.agentSubmitButton();
@@ -36,8 +34,8 @@ public class FullTeamSetUpTest extends BaseClass {
 		agentpage.mouseHoverCallList();
 
 		listNameTest = properties.getProperty("ListName");
-		
-		csvuploadpage=new CSVUploadPage(driver);
+
+		csvuploadpage = new CSVUploadPage(driver);
 		csvuploadpage.listNameTextField(listNameTest);
 		csvuploadpage.selectAnAgent();
 		csvuploadpage.selectAll();
@@ -48,13 +46,13 @@ public class FullTeamSetUpTest extends BaseClass {
 		robot = new Robot();
 		robot.delay(2000);
 		stringselection = new StringSelection("C:\\Users\\vamsh\\Downloads\\Sample File.csv");
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringselection,null);
-		robot.keyPress(KeyEvent.VK_CONTROL); 
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringselection, null);
+		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_V);
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyRelease(KeyEvent.VK_V);
 		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER); 
+		robot.keyRelease(KeyEvent.VK_ENTER);
 
 		csvuploadpage.uploadFileButton();
 		Thread.sleep(2000);
@@ -65,7 +63,6 @@ public class FullTeamSetUpTest extends BaseClass {
 		csvuploadpage.belongToNotes();
 		csvuploadpage.importDataButton();
 		csvuploadpage.dataUploadedSuccessfullyPopUp();
-
 
 	}
 }

@@ -7,8 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LogOutPage {
 	WebDriver driver;
+
 	public LogOutPage(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -21,6 +22,7 @@ public class LogOutPage {
 	public void dashBoardIcon() {
 		dashboardicon.click();
 	}
+
 	public void logOutButton() {
 		logoutbutton.click();
 	}

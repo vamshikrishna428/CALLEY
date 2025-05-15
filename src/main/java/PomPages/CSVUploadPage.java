@@ -10,8 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CSVUploadPage {
 	WebDriver driver;
+
 	public CSVUploadPage(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -48,7 +49,6 @@ public class CSVUploadPage {
 	@FindBy(xpath = "//button[@class='confirm']")
 	private WebElement datauploadedsuccessfullypopup;
 
-
 	public void listNameTextField(String listNameTextBox) {
 		listnametxbx.sendKeys(listNameTextBox);
 	}
@@ -60,44 +60,49 @@ public class CSVUploadPage {
 	public void selectAll() {
 		selectall.click();
 	}
+
 	public void fileUpLoad() {
 		JavascriptExecutor j = (JavascriptExecutor) driver;
 		j.executeScript("arguments[0].click();", fileupload);
 	}
-	public  void mouseHover() {
+
+	public void mouseHover() {
 		Actions ac = new Actions(driver);
 		ac.moveToElement(listnametxbx);
 		ac.click().build().perform();
 	}
+
 	public void uploadFileButton() {
 		uploadfilebutton.click();
 	}
+
 	public void sweetPopUpButton() {
 		sweetpopupbutton.click();
 	}
+
 	public void belongToFirstName() {
-		Select select=new Select(belongtofirstname);
+		Select select = new Select(belongtofirstname);
 		select.selectByVisibleText("FirstName");
 	}
+
 	public void belongToPhoneNumber() {
-		Select select=new Select(belongtophonenumber);
+		Select select = new Select(belongtophonenumber);
 		select.selectByValue("Phone");
 	}
+
 	public void belongToNotes() {
-		Select select=new Select(belongtonotes);
+		Select select = new Select(belongtonotes);
 		select.selectByValue("Notes");
 	}
+
 	public void importDataButton() {
 		JavascriptExecutor j = (JavascriptExecutor) driver;
 		j.executeScript("arguments[0].scrollIntoView(true);", importdatabutton);
 		importdatabutton.click();
 	}
+
 	public void dataUploadedSuccessfullyPopUp() {
 		datauploadedsuccessfullypopup.click();
 	}
 
-
-
 }
-
-

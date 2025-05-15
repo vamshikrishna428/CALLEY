@@ -2,12 +2,16 @@ package Instances;
 
 import java.awt.Robot;
 import java.awt.datatransfer.StringSelection;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 import java.util.Random;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,11 +29,9 @@ import PomPages.CSVUploadPage;
 import PomPages.LogOutPage;
 import PomPages.LoginPage;
 
-
-
 public class BaseClass {
-	public WebDriver driver;
-	public 	Robot robot;
+	public static WebDriver driver;
+	public Robot robot;
 	public Random random;
 	public Properties properties;
 	public FileInputStream fileinputstream;
@@ -40,8 +42,6 @@ public class BaseClass {
 	public LogOutPage logoutpage;
 
 	public CSVUploadPage csvuploadpage;
-
-
 
 	public int randomnumber;
 	public long longtimeout;
@@ -55,21 +55,21 @@ public class BaseClass {
 	public String agentPassword;
 
 	public String listNameTest;
-	
-	
+
 	@BeforeSuite
 	public void beforeSuit() {
-		System.out.println("BeforeSuiteMethod");
+
 	}
+
 	@BeforeTest
-	public void beforeTest()  {
-		System.out.println("BeforeTestMethod");
+	public void beforeTest() {
+
 	}
 
 	@BeforeClass
-	public void openBrowser()  throws IOException{
-		fileinputstream=new FileInputStream("./src/test/resources/testData.properties");
-		properties=new Properties();
+	public void openBrowser() throws IOException {
+		fileinputstream = new FileInputStream("./src/test/resources/testData.properties");
+		properties = new Properties();
 		properties.load(fileinputstream);
 
 		ChromeOptions chromeoptions = new ChromeOptions();
@@ -77,6 +77,7 @@ public class BaseClass {
 		driver = new ChromeDriver(chromeoptions);
 		driver.manage().window().maximize();
 	}
+
 	@BeforeMethod
 	public void login() {
 
@@ -85,31 +86,45 @@ public class BaseClass {
 		implicitwait = properties.getProperty("timeOut");
 		longtimeout = Long.parseLong(implicitwait);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(longtimeout));
-		loginpage=new LoginPage(driver);
+		loginpage = new LoginPage(driver);
 		usernameData = properties.getProperty("useremail");
 		passwordData = properties.getProperty("userpassword");
 		loginpage.signIn(usernameData, passwordData);
 
 	}
+
 	@AfterMethod
 	public void logOut() {
-		logoutpage=new LogOutPage(driver);
+		logoutpage = new LogOutPage(driver);
 		logoutpage.dashBoardIcon();
 		logoutpage.logOutButton();
 		System.out.println("log-out sucessfully");
 	}
+
 	@AfterClass
 	public void closeBrowser() {
 		driver.quit();
 	}
+
 	@AfterTest
 	public void afterTest() {
-		System.out.println("AfterTestMethod");
-	}
-	@AfterSuite
-	public void afterSuit() {
-		System.out.println("AfterSuiteMethod");
+
 	}
 
+	@AfterSuite
+	public void afterSuit() {
+
+	}
+	public void screenShotMethod(String filename) {
+		File source =((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File destination = new File("./SCREENSHOTS/" + filename);
+		try {
+			FileUtils.copyFile(source, destination);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("ScreenShot saved Successfully onTestFailure");
+
+	}
 
 }

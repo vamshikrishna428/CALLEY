@@ -18,14 +18,12 @@ import org.testng.annotations.BeforeTest;
 
 import PomPages.RegistrationPage;
 
-
 public class RegBaseClass {
 	public WebDriver driver;
 	public FileInputStream fileinputstream;
 	public Properties properties;
 
-	public	RegistrationPage registrationpage;
-
+	public RegistrationPage registrationpage;
 
 	public String registrationurl;
 	public String implicitwait;
@@ -41,14 +39,16 @@ public class RegBaseClass {
 	public void beforeSuit() {
 		System.out.println("BeforeSuiteMethod");
 	}
+
 	@BeforeTest
-	public void beforeTest()  {
+	public void beforeTest() {
 		System.out.println("BeforeTestMethod");
 	}
+
 	@BeforeClass
 	public void openBrowser() throws IOException {
-		fileinputstream=new FileInputStream("./src/test/resources/testData.properties");
-		properties=new Properties();
+		fileinputstream = new FileInputStream("./src/test/resources/testData.properties");
+		properties = new Properties();
 		properties.load(fileinputstream);
 
 		ChromeOptions chromeoptions = new ChromeOptions();
@@ -56,6 +56,7 @@ public class RegBaseClass {
 		driver = new ChromeDriver(chromeoptions);
 		driver.manage().window().maximize();
 	}
+
 	@BeforeMethod
 	public void loginRegister() {
 		registrationurl = properties.getProperty("RegistrationUrl");
@@ -63,7 +64,7 @@ public class RegBaseClass {
 		implicitwait = properties.getProperty("timeOut");
 		longtimeout = Long.parseLong(implicitwait);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(longtimeout));
-		registrationpage=new RegistrationPage(driver);
+		registrationpage = new RegistrationPage(driver);
 
 	}
 
@@ -71,10 +72,12 @@ public class RegBaseClass {
 	public void closeBrowser() {
 		driver.quit();
 	}
+
 	@AfterTest
 	public void afterTest() {
 		System.out.println("AfterTestMethod");
 	}
+
 	@AfterSuite
 	public void afterSuit() {
 		System.out.println("AfterSuiteMethod");

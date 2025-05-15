@@ -3,6 +3,7 @@ package TestClasses;
 import org.testng.annotations.Test;
 
 import Instances.RegBaseClass;
+
 @Test
 public class RegistrationTest extends RegBaseClass {
 
@@ -27,4 +28,3 @@ public class RegistrationTest extends RegBaseClass {
 		registrationpage.smsPopUp();
 	}
 }
-
